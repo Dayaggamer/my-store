@@ -1,0 +1,21 @@
+<p>the cant {{myShoppingCart.length}}</p>
+<p>Total: ${{total}}</p>
+<!-- <p>Today: {{today | date:'medium'}} </p>
+<p>Today: {{date | timeAgo}} </p> -->
+
+<button (click)="toggleProductDetail()">click</button>
+<div class="products--grid">
+  <app-product
+    [product]="product"
+    *ngFor="let product of products"
+    (addedProduct)="onAddToShoppingCart($event)"
+    (showProduct)="onShowDetail($event)"
+  ></app-product>
+</div>
+<div class="product-detail" [class.active]="showProductDetail">
+  <div *ngIf="productChosen" >
+    <button (click)="toggleProductDetail()">Close</button>
+    <h1>{{productChosen.title}}</h1>
+    <p>{{productChosen.description}}</p>
+  </div>
+</div>
